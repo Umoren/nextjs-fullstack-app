@@ -1,5 +1,9 @@
+import {
+  RouterContext
+} from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
 import '../pages/globals.css';
+
 
 const BREAKPOINTS_INT = {
   xs: 375,
@@ -30,16 +34,26 @@ const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
+  value: (props) => < OriginalNextImage {
+    ...props
+  }
+  unoptimized / > ,
 });
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: {
+    argTypesRegex: '^on[A-Z].*'
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
-  viewport: { viewports: customViewports },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
+  viewport: {
+    viewports: customViewports
+  },
 };

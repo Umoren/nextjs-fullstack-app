@@ -29,5 +29,8 @@
     "userinfo",
     "Vercel",
     "Viewports"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }
